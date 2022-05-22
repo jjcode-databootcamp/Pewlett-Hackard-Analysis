@@ -7,7 +7,7 @@
 SELECT 
   e.emp_no, e.first_name, e.last_name,
   t.title, t.from_date, t.to_date
-  INTO retirees_titles
+  INTO retirement_titles
 From
   employees AS e
   INNER JOIN titles AS t ON(e.emp_no = t.emp_no)
@@ -35,7 +35,7 @@ ORDER BY emp_no, to_date DESC;
 
 SELECT
   title,
-  COUNT(emp_no) AS count_titles
+  COUNT(*) AS count_titles
   INTO retiring_titles
 FROM unique_titles
 GROUP BY title
