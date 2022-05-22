@@ -1,4 +1,4 @@
------------Deliverable 1---------
+-----------Retiring Employees---------
 
 ----Excerise 1----
 --1. Join 'employees" and "titles" table together with primary key "emp_no"
@@ -35,10 +35,27 @@ ORDER BY emp_no, to_date DESC;
 
 SELECT
   title,
-  COUNT(title) AS count_titles
+  COUNT(emp_no) AS count_titles
   INTO retiring_titles
 FROM unique_titles
 GROUP BY title
 ORDER BY count_titles DESC;
 
------------Deliverable 2---------
+-----------Mentorship Program--------
+--1. Remove duplicate rows
+--2. Join "employees", "dept_emp" and "titles" table together using primary key "emp_no"
+--3. Filter to current employees and birthdate January 1, 1965 and December 31, 1965.
+--4. Sort by "emp_no"
+--5. Outupt to "mentorship_eligibilty" table
+SELECT DISTINCT ON(e.emp_no)
+  e.emp_no, e.first_name, e.last_name, e.birth_date,
+  de.from_date,  de.to_date,
+  t.title,
+  INTO mentorship_eligibilty
+FROM employees AS e
+    INNER JOIN dept_emp AS de ON(e.emp_no = de.emp_no)
+        INNER JOIN titles AS t ON(e.emp_no = t.emp_no)
+WHERE
+  (de.to_date = '9999-01-01') AND
+  (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY emp_no ASC;
