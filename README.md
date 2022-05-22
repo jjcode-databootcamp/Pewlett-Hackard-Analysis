@@ -22,6 +22,8 @@ Here is the Entity Relationship Diagram for each table:
 2. 70% of retiring employees have a "senior" title (50,842/ 72,458)
 3. 24% of the current employees qualify to retire (72,458/300,024)
 4. 1% current employees qualify for mentorship (1,549/300,024)
+
+
 ![retiring_titles_count](Resources/retiring_titles_count.png)
 
 ## Summary 
